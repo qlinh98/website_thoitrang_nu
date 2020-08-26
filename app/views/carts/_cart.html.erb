@@ -1,0 +1,33 @@
+<!-- Cart -->
+<div class="col-lg-3 text-right col-lg-3"id="viewcart" value = "<%=@cart.id%>">
+  <ul class="nav-right">
+    <li class="cart-icon">
+      <a href="#">
+        <i class="fa fa-shopping-bag"></i>
+        <span><%=cart.chitiet_dathang.length%></span>
+      </a>
+      <div class="cart-hover">
+        <div class="select-items">
+          <%if cart.chitiet_dathang.empty?%>
+            <h5 style = "text-align: center;">Giỏ hàng trống</h5>
+          <%else%>
+            <%= render(cart.chitiet_dathang) %>
+          <%end%>
+        </div>
+        <div class="select-total">
+          <span>Tổng tiền:</span>
+          <h5><%= number_to_currency((cart.total_price), unit: "VND", precision: 0, format: "%n %u")%></h5>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- /Cart -->
+<script>
+  $(document).ready(function(){
+      $('#viewcart').click(function () {
+        window.location.href='/carts/' + $(this).attr("value");
+      }
+  );
+  })
+</script>

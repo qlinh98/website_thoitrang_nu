@@ -1,0 +1,2 @@
+module NhacungcapsHelper
+end

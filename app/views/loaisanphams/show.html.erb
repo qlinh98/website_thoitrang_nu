@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tenloai:</strong>
+  <%= @loaisanpham.tenloai %>
+</p>
+
+<p>
+  <strong>Danhmuc:</strong>
+  <%= @loaisanpham.danhmuc_id %>
+</p>
+
+<%= link_to 'Edit', edit_loaisanpham_path(@loaisanpham) %> |
+<%= link_to 'Back', loaisanphams_path %>

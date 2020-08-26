@@ -1,0 +1,2 @@
+module GiaohangsHelper
+end

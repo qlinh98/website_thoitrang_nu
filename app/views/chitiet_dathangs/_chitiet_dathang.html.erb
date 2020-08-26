@@ -1,0 +1,14 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="si-pic"><img src= <%=chitiet_dathang.chitietsanpham.hinh1%> alt=""></td>
+      <td class="si-text">
+        <div class="product-selected">
+        <p><%= chitiet_dathang.soluong %>&times;</span><%= number_to_currency((chitiet_dathang.chitietsanpham.giaban), unit: "VND", precision: 0, format: "%n %u")%></p>
+        <p>Màu: <%=chitiet_dathang.mausp%>, Size: <%=chitiet_dathang.size.upcase%></p>
+        <h6><%=chitiet_dathang.chitietsanpham&.sanpham.tensanpham%></h6>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>

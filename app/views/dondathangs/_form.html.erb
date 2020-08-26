@@ -1,0 +1,132 @@
+<!-- SECTION -->
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row" style="margin-right: -150px; margin-left: -150px">
+      <div class="col-md-7">
+        <!-- Billing Details -->
+        <div class="billing-details">
+          <div class="section-title">
+            <h3 class="title">THÔNG TIN ĐƠN ĐẶT HÀNG</h3>
+          </div>
+          <%= form_with(model: dondathang, local: true, id: "form_dh") do |form| %>
+            <% if dondathang.errors.any? %>
+              <div class="my-notify-info">
+                <h2><%= pluralize(dondathang.errors.count, "Error")%></h2>
+                <ul>
+                  <% dondathang.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% if user_signed_in? %>
+              <div class="form-group">
+                <%= form.label "Người đặt hàng (*)" %><br>
+                <%= form.text_field :user_id, readonly: true, :required => true, :value => current_user.email, size: 40, class: "input" %>
+              </div>
+            <%end%>
+            <div class="form-group">
+              <%=  form.label "Người nhận hàng (*)"%><br>
+              <p id="v_nguoinhanhang" style="color: red"></p>
+              <%= form.text_field :nguoinhanhang, :required => true, size: 40, class: "input"%>
+            </div>
+            <div class="form-group">
+              <%=  form.label "Ngày đặt hàng (*)"%><br>
+              <%= form.text_field :ngaydathang,readonly: true, :required => true, :value => Time.now.strftime("%d-%m-%Y"), size: 40, class: "input"%>
+            </div>
+            <div class="form-group">
+              <%= form.label "Số điện thoại (*)" %><br>
+              <p id="v_sdt" style="color: red"></p>
+              <%= form.number_field :sdt, :required => true, size: 40, class: "input" %>
+            </div>
+            <div class="form-group">
+              <%= form.label "Địa chỉ giao (*)" %><br>
+              <p id="v_diachigiao" style="color: red"></p>
+              <%= form.text_field :diachigiao, :required => true, size: 40, class: "input" %>
+            </div>
+            <div class="form-group">
+              <%= form.label "Ghi chú" %><br>
+              <p id="v_ghichu" style="color: red"></p>
+              <%= form.text_field :ghichu, size: 40, class: "input" %>
+            </div>
+            <div class="form-group">
+              <%= form.label "Phương thức thanh toán (*)" %><br>
+              <div class="select">
+                <%= form.select :phuongthuctt, [['Thanh toán khi nhận hàng', 'Thanh toán khi nhận hàng'], ['Thanh toán tại cửa hàng', 'Thanh toán tại cửa hàng'], ['Thanh toán online', 'Thanh toán online']], { class: 'select-css' }%><br>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= form.label "Tổng tiền" %><br>
+              <strong class="order-total"><%= form.text_field :total, :required => true,:value => number_to_currency((@cart.total_price), unit: "VND", precision: 0, format: "%n %u") , size: 40, class: "input",readonly: true%></strong>
+              <strong class="order-total"><%= form.text_field :tongtien, :required => true,:value => @cart.total_price.to_i ,readonly: true, hidden: true%></strong>
+            </div>
+            <div input type="button" id = "button_dk">
+              <%= form.submit "ĐẶT HÀNG", class:"primary-btn-dh", id: "check" %>
+            </div>
+            <div class ="payment_tt" id = "button_dk_online" >
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Thanh toán đơn hàng" data-amount="<%= @cart.total_price %>" data-locale="auto" data-email="<%= current_user.email %>"></script>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- Order Details -->
+      <div class="col-md-5 order-details1">
+        <div class="section-title text-center">
+          <h3 class="title">CHI TIẾT ĐƠN ĐẶT HÀNG</h3>
+        </div>
+        <div class="order-summary">
+          <div class="order-col">
+            <div><strong>SẢN PHẨM</strong></div>
+            <div><strong>GIÁ</strong></div>
+          </div>
+          <%Chitietsize.where(chitietsanpham_id: @cart.chitiet_dathang[0].chitietsanpham, sizesanpham_id: Sizesanpham.where(tensize: @cart.chitiet_dathang[0].size))[0].soluongton%>
+          <div class = "scroll">
+            <% @cart.chitiet_dathang.each do |item| %>
+              <div class="order-col">
+                <div class="hover_mau">
+                  <img src="<%=item.chitietsanpham.hinh1%>" alt="" width="45" height="40">
+                  <td><%= item.soluong %> x </td>
+                  <td><%=link_to item.chitietsanpham.sanpham.tensanpham, item.chitietsanpham.sanpham %></td>
+                  <td> - <%= item.mausp%> x <%= item.size.upcase %></td>
+                  <br/>
+                  <td>Mã sản phẩm: <%= item.chitietsanpham_id%></td>
+                  <td>
+                    <p id = "<%=item.id%>"></p>
+                  </td>
+                </div>
+                <div class="price-product"><strong><%= number_to_currency((item.total_price), unit: "VND", precision: 0, format: "%n %u") %></strong></div>
+              </div>
+            <% end %>
+          </div>
+          <tr class="total_line">
+            <div class="order-col">
+              <div>Phí giao hàng</div>
+              <div><strong>MIỄN PHÍ</strong></div>
+            </div>
+            <div class="order-col">
+              <div><strong>TỔNG TIỀN</strong></div>
+              <div><strong class="order-total"><%= number_to_currency((@cart.total_price), unit: "VND", precision: 0, format: "%n %u") %></strong></div>
+            </div>
+            <div input class="primary-btn-dh" >
+              <%= link_to 'Giỏ hàng', controller: "carts", action: "show", id: @cart.id%>
+            </div>
+          </tr>
+          <%= javascript_tag do %>
+            window.chitietdh = <%=raw @cart.chitiet_dathang.to_json%>;
+            window.chitietsize = <%=raw Chitietsize.all.to_json%>;
+            window.sizesp = <%=raw Sizesanpham.all.to_json%>;
+          <%end%>
+        </div>
+        <!-- /Order Details -->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+<%= javascript_include_tag 'form_dathang', 'data-turbolinks-track': 'reload' %>

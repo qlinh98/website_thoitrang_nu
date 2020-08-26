@@ -1,0 +1,37 @@
+<%= form_with(model: thuonghieu, local: true) do |form| %>
+  <% if thuonghieu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(thuonghieu.errors.count, "error") %> prohibited this thuonghieu from being saved:</h2>
+
+      <ul>
+        <% thuonghieu.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tenthuonghieu %>
+    <%= form.text_field :tenthuonghieu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinhanh %>
+    <%= form.text_field :hinhanh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diachi %>
+    <%= form.text_field :diachi %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

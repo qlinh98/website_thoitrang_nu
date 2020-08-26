@@ -1,0 +1,6 @@
+<%= form_tag( sanphams_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search], class: "input1", placeholder: "Bạn cần gì?") %>
+  <%= button_tag( name: nil, class: "search-btn") do %>
+  <i class="fa fa-search"></i>
+<% end %>
+<% end %>

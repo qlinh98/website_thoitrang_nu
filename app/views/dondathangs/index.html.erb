@@ -1,0 +1,50 @@
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <%if @dondathangs.empty?%>
+        <div class="col-lg-6 offset-lg-3">
+          <div class="register-form">
+            <h2>Trống</h2>
+            <h2><a href="/sanphams">Xem sản phẩm mới</h2>
+          </div>
+        </div>
+      <%else%>
+        <div class="col-lg-6 offset-lg-3">
+          <div class="register-form">
+            <h2>Danh Sách Đơn Đặt Hàng</h2>
+          </div>
+        </div>
+        <table class="table table-bordered cart_summary">
+          <thead>
+            <tr style="background-color:#e7ab3c">
+              <th class="text-center">Mã đơn hàng</th>
+              <th class="text-center">Ngày đặt hàng</th>
+              <th class="text-center">Tổng tiền</th>
+              <th class="text-center">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @dondathangs.each do |dondathang| %>
+              <tr>
+                <td class="cart_product" style="text-align: center">
+                  <%= dondathang.id %>
+                </td>
+                <td class="cart_description" style="text-align: center">
+                  <%= dondathang.ngaydathang %>
+                </td>
+                <td class="price" style="text-align: center"><span><%=  number_to_currency(dondathang.tongtien, precision: 0,unit: "VND", format: "%n %u") %></span>
+                </td>
+                <td class="action" style="text-align: center">
+                  <%= link_to 'Xem chi tiết đặt hàng', dondathang, class: "primary-btn pd-cart"%>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <%= paginate @dondathangs%>
+      <%end%>
+    </div>
+  </div>
+</div>

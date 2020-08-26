@@ -1,0 +1,79 @@
+<div class="border_email">
+  <div class="padding_email">
+    <h2 style="text-align: center;">FASHION STORE</h2>
+    <p>
+      Xin chào <b><%= @dondathang.email %></b>,
+    </p>
+    <br/>
+    <p id="note">* Vui lòng kiểm tra sản phẩm khi nhận hàng.</p>
+    <p id="note">* Đơn hàng của bạn có thể được tách ra để giao nhiều lần do hàng được điều phối từ nhiều nơi.</p>
+    <p id="note">* Trong trường hợp có vấn đề phát sinh, Fashion Store sẽ liên lạc với bạn.</p>
+    <br/>
+    <p>Cảm ơn bạn đã mua hàng tại <b>Fashion Store!</b></p>
+    <p>Dưới đây là chi tiết đơn hàng của bạn:</p>
+    <br/>
+    <p><b>Đơn hàng số # <%=@dondathang.id%></b> (vào <%=@dondathang.created_at%>) sẽ được giao muộn nhất vào ngày <b><%=@dondathang.ngaydathang + 4.days%></b></p>
+    <br/>
+    <table id="customers">
+      <tbody>
+        <tr>
+          <th>Mã sản phẩm</th>
+          <th>Tên sản phẩm</th>
+          <th>Màu</th>
+          <th>Size</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+        </tr>
+        <%# <%= render @order.line_items %>
+        <%= render partial: "chitiet_dathang",  collection: @dondathang.chitiet_dathang, as: "chitiet_dathang" %>
+        <tr style="background:white;">
+          <td colspan="5" style="text-align: right;">
+            <p>Phí vận chuyển</p>
+            <b>Tổng tiền</b>
+          </td>
+          <td colspan="6" style="text-align: left;">
+            <p>0</p>
+            <b><%=number_to_currency((@dondathang.tongtien), unit: "VND", precision: 0, format: "%n %u")%></b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container_table">
+      <div class="floatLeft">
+        <table id="customers" >
+          <tr>
+            <th>
+              Thông tin giao hàng
+            </th>
+          </tr>
+          <tr  style= "background:white;">
+            <td>
+              <p>Người nhận hàng: <%=@dondathang.nguoinhanhang%> </p>
+              <p>Địa chỉ: <%=@dondathang.diachigiao%></p>
+              <p> SDT: <%=@dondathang.sdt%> </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="floatRight">
+        <table id="customers" >
+          <tr>
+            <th>
+              Phương thức thanh toán
+            </th>
+          </tr>
+          <tr style= "background:white;">
+            <td>
+              <p><%=@dondathang.phuongthuctt%></p>
+              <p><br/>
+              </p>
+              <p><br/>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <p style="text-align: center;">Chúng tôi thành thật xin lỗi nếu email này làm phiền bạn!</p>
+  </div>
+</div>

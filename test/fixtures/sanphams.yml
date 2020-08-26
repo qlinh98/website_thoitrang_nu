@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tensanpham: MyString
+  giaban: 9.99
+  mota: MyText
+  loaisanpham: one
+  thuonghieu: one
+
+two:
+  tensanpham: MyString
+  giaban: 9.99
+  mota: MyText
+  loaisanpham: two
+  thuonghieu: two

@@ -1,0 +1,152 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb-text">
+          <a href="#"><i class="fa fa-home"></i> Trang chủ</a>
+          <span> Cửa hàng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+        <div class="filter-widget">
+          <h4 class="fw-title">Loại hàng</h4>
+          <ul class="filter-catagories">
+            <li><a href="#">Quần áo</a></li>
+            <li><a href="#">Giày</a></li>
+            <li><a href="#">Túi xách</a></li>
+          </ul>
+        </div>
+        <div class="filter-widget">
+          <h4 class="fw-title">Thương hiệu</h4>
+          <div class="fw-brand-check">
+            <div class="bc-item">
+              <label for="bc-calvin">
+                Calvin Klein
+                <input type="checkbox" id="bc-calvin">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="bc-item">
+              <label for="bc-diesel">
+                Diesel
+                <input type="checkbox" id="bc-diesel">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="bc-item">
+              <label for="bc-polo">
+                Polo
+                <input type="checkbox" id="bc-polo">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="bc-item">
+              <label for="bc-tommy">
+                Tommy Hilfiger
+                <input type="checkbox" id="bc-tommy">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="filter-widget">
+          <h4 class="fw-title"></h4>
+          <div class="filter-range-wrap">
+            <div class="range-slider">
+              <div class="price-input">
+                <input type="text" id="minamount">
+                <input type="text" id="maxamount">
+              </div>
+            </div>
+            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="100000" data-max="25000000">
+              <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+            </div>
+          </div>
+          <a href="#" class="filter-btn">Lọc</a>
+        </div>
+        <div class="filter-widget">
+          <h4 class="fw-title">Kích thước</h4>
+          <div class="fw-size-choose">
+            <div class="sc-item">
+              <input type="radio" id="s-size">
+              <label for="s-size">s</label>
+            </div>
+            <div class="sc-item">
+              <input type="radio" id="m-size">
+              <label for="m-size">m</label>
+            </div>
+            <div class="sc-item">
+              <input type="radio" id="l-size">
+              <label for="l-size">l</label>
+            </div>
+            <div class="sc-item">
+              <input type="radio" id="xs-size">
+              <label for="xs-size">xs</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 order-1 order-lg-2">
+        <div class="product-list">
+          <div class="row">
+            <% @sanphams.each do |ctsps| %>
+              <%show_chitietsp(ctsps.id)%>
+              <div class="col-lg-4 col-sm-6">
+                <div class="product-item">
+                  <div class="pi-pic">
+                    <ul>
+                      <li class="quick-view"><a>Xem sản phẩm <i class="fa fa-search-plus" aria-hidden="true"></i> </a></li>
+                    </ul>
+                    <%=link_to ctsps do%>
+                      <%= image_tag @ctsps&.first&.hinh1.url, class: "img_css"%>
+                    <%end%>
+                    <div class="sale pp-sale">Sale</div>
+                  </div>
+                  <div class="pi-text">
+                    <div class="catagory-name"><%=ctsps.loaisanpham.tenloai%></div>
+                    <h5><%= link_to ctsps.tensanpham, ctsps %></h5>
+                    <div class="product-price">
+                      <%= number_to_currency((@ctsps&.first&.giaban), precision: 0, unit: "VND", format: "%n %u") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          </div>
+          <%= paginate @sanphams%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Product Shop Section End -->
+<script>
+  $(document).ready(function(){
+        $('#add_cart').click(function () {
+  
+          // window.location.href='/chitiet_dathangs?chitietsanpham_id=' + $(this).attr("value");
+          // alert ("hello");
+          console.log ("hello");
+        }
+    );
+  
+   $(".test1").html("<i class='fa fa-shopping-bag'  ></i>");
+  //  $(".test1").attr("value") = 555;
+  // $(".test1").click(function(){
+  //   console.log ("aaa");
+  //   // $(this).attr("value") = 555;
+  //   console.log ($(this).attr("value"));
+  // });
+    })
+</script>

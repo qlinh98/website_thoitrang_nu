@@ -1,0 +1,137 @@
+<%if @cart.chitiet_dathang.empty?%>
+  <h2 class="text-center" style="margin-top:0px">Giỏ hàng trống</h2>
+  <br/>
+<%else%>
+  <div class="container">
+    <h2 class="text-center" style="margin-top:0px">Giỏ hàng</h2>
+    <br/>
+    <table class="table table-hover" style="width: 1200px">
+      <thead class="thead-dark">
+        <tr>
+          <th>Hình ảnh</th>
+          <th>Tên sản phẩm</th>
+          <th>Màu sắc</th>
+          <th>Kích thước</th>
+          <th>Số lượng</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody >
+        <% @arr_ctsp = [] %>
+        <% @cart.chitiet_dathang.each do |item| %>
+          <% @arr_ctsp << item %>
+          <tr>
+            <td>
+              <img src="<%=item.chitietsanpham.hinh1%>" alt="" width=70px height = 70px>
+            </td>
+            <td><%=link_to item.chitietsanpham.sanpham.tensanpham, item.chitietsanpham.sanpham %></td>
+            <td><%= item.mausp %></td>
+            <td><%= item.size.upcase %></td>
+            <td><%= item.soluong %></td>
+            <td><%= number_to_currency((item.chitietsanpham.giaban), unit: "VND", precision: 0, format: "%n %u")%></td>
+            <td class="item_price"><%= number_to_currency((item.total_price), unit: "VND", precision: 0, format: "%n %u")%></td>
+            <td><%= link_to "X", item, method: :delete, data: { confirm: 'Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?' }, class: "btn btn-danger"%></td>
+          </tr>
+        <%end%>
+      </tbody>
+      <thead class="thead-dark">
+        <tr>
+          <th>Tổng tiền</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th class="total_cell"><%= number_to_currency((@cart.total_price), unit: "VND", precision: 0, format: "%n %u")%></th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><%= link_to "Xóa giỏ hàng", @cart, method: :delete, data: { confirm: 'Bạn có chắc muốn xóa gió hàng này?' }, class: "btn btn-danger"%><small> <%= @cart.total_item_product %> (sản phẩm)</small></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>
+            <a href="/dondathangs/new" class="primary-btn-dh">Thanh toán</a>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Related Products Section End -->
+  <%arr = show_hui_cart(@arr_ctsp).sample%>
+  <%if arr.nil?%>
+    <%arr = show_hui_cart(@arr_ctsp).sample%>
+  <%end%>
+  <%if arr.nil?%>
+    <%arr = show_hui_cart(@arr_ctsp).sample%>
+  <%end%>
+  <%if arr.nil?%>
+    <%arr = show_hui_cart(@arr_ctsp).sample%>
+  <%end%>
+  <%unless arr.nil?%>
+    <div class="related-products">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title" >
+              <h2>Gợi ý Sản Phẩm Theo Set</h2>
+            </div>
+          </div>
+        </div>
+        <%if arr.length == 1%>
+          <div class="col-lg-8-1 offset-lg-related1">
+            <div class="product-slider1 owl-carousel">
+            <%elsif arr.length == 2%>
+              <div class="col-lg-8-2 offset-lg-related2">
+                <div class="product-slider2 owl-carousel">
+                <%elsif arr.length == 3%>
+                  <div class="col-lg-8-3 offset-lg-related3">
+                    <div class="product-slider3 owl-carousel">
+                    <%else%>
+                      <div class="col-lg-8 offset-lg-related">
+                        <div class="product-slider owl-carousel">
+                        <%end%>
+                        <%arr.each do |itemset|%>
+                          <%@chitiet_sp.where(id: itemset).each do |item|%>
+                            <div class="product-item">
+                              <div class="pi-pic">
+                                <%=link_to @chitiet_sp.where(id: itemset)[0].sanpham do%>
+                                  <%= image_tag item.hinh1.url%>
+                                <%end%>
+                                <div class="sale">Hot</div>
+                              </div>
+                              <div class="pi-text">
+                                <div class="catagory-name"><%= item.sanpham.loaisanpham.tenloai%></div>
+                                <a href="#">
+                                  <h5><%=item.sanpham.tensanpham%></h5>
+                                </a>
+                                <div class="product-price">
+                                  <%=number_to_currency((item.giaban), unit: "VND", precision: 0 , format: "%n %u")%>
+                                </div>
+                              </div>
+                            </div>
+                          <%end%>
+                        <%end%>
+                      </div>
+                    </div>
+                  </div>
+                  <%if arr.length < 4%>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Related Products Section End -->
+  <%end%>
+<%end%>

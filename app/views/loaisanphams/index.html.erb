@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loaisanphams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tenloai</th>
+      <th>Danhmuc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loaisanphams.each do |loaisanpham| %>
+      <tr>
+        <td><%= loaisanpham.tenloai %></td>
+        <td><%= loaisanpham.danhmuc_id %></td>
+        <td><%= link_to 'Show', loaisanpham %></td>
+        <td><%= link_to 'Edit', edit_loaisanpham_path(loaisanpham) %></td>
+        <td><%= link_to 'Destroy', loaisanpham, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loaisanpham', new_loaisanpham_path %>

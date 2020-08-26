@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ngaynhap:</strong>
+  <%= @hoadonnhap.ngaynhap %>
+</p>
+
+<p>
+  <strong>Tongtien:</strong>
+  <%= @hoadonnhap.tongtien %>
+</p>
+
+<p>
+  <strong>Nhacungcap:</strong>
+  <%= @hoadonnhap.nhacungcap_id %>
+</p>
+
+<%= link_to 'Edit', edit_hoadonnhap_path(@hoadonnhap) %> |
+<%= link_to 'Back', hoadonnhaps_path %>

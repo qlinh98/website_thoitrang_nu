@@ -1,0 +1,32 @@
+<%= form_with(model: hoadonnhap, local: true) do |form| %>
+  <% if hoadonnhap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hoadonnhap.errors.count, "error") %> prohibited this hoadonnhap from being saved:</h2>
+
+      <ul>
+        <% hoadonnhap.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ngaynhap %>
+    <%= form.date_select :ngaynhap %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tongtien %>
+    <%= form.text_field :tongtien %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nhacungcap_id %>
+    <%= form.text_field :nhacungcap_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

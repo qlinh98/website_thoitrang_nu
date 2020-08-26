@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Websitethoitrang</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%#  %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# %>
+    <%= stylesheet_link_tag 'fonts', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'font-awesome.min', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'elegant-icons', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'owl.carousel.min', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'nice-select', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'jquery-ui.min', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'slicknav.min', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%#  %>
+    <%= javascript_include_tag 'jquery-3.3.1.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery-ui.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.countdown.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.nice-select.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.zoom.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.dd.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.slicknav', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'owl.carousel.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <%= render "layouts/header"%>
+    <%if notice.present?%>
+      <div class="container">
+        <div class="alert alert-success">
+          <strong>
+            <p class="notice"><%= notice %></p>
+          </strong>
+        </div>
+      </div>
+    <%end%>
+    <%if alert.present? %>
+      <div class="container">
+        <div class="alert alert-success">
+          <strong>
+            <p class="alert"><%= alert %></p>
+          </strong>
+        </div>
+      </div>
+    <%end%>
+    <br/>
+    <%= yield %>
+    <%= render "layouts/footer"%>
+    <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'owl.carousel.min', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

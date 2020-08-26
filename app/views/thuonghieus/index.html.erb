@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Thuonghieus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tenthuonghieu</th>
+      <th>Hinhanh</th>
+      <th>Diachi</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @thuonghieus.each do |thuonghieu| %>
+      <tr>
+        <td><%= thuonghieu.tenthuonghieu %></td>
+        <td><%= thuonghieu.hinhanh %></td>
+        <td><%= thuonghieu.diachi %></td>
+        <td><%= thuonghieu.email %></td>
+        <td><%= link_to 'Show', thuonghieu %></td>
+        <td><%= link_to 'Edit', edit_thuonghieu_path(thuonghieu) %></td>
+        <td><%= link_to 'Destroy', thuonghieu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thuonghieu', new_thuonghieu_path %>

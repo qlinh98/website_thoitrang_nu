@@ -1,0 +1,2 @@
+class DanhsachHui < ApplicationRecord
+end

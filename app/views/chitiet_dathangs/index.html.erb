@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+<h1>Chitiet Dathangs</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Soluong</th>
+      <th>Dongia</th>
+      <th>Thanhtien</th>
+      <th>Chitietsanpham</th>
+      <th>Dondathang</th>
+      <th>Cart</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @chitiet_dathangs.each do |chitiet_dathang| %>
+      <tr>
+        <td><%= chitiet_dathang.soluong %></td>
+        <td><%= chitiet_dathang.dongia %></td>
+        <td><%= chitiet_dathang.thanhtien %></td>
+        <td><%= chitiet_dathang.chitietsanpham_id %></td>
+        <td><%= chitiet_dathang.dondathang_id %></td>
+        <td><%= chitiet_dathang.cart_id %></td>
+        <td><%= link_to 'Show', chitiet_dathang %></td>
+        <td><%= link_to 'Edit', edit_chitiet_dathang_path(chitiet_dathang) %></td>
+        <td><%= link_to 'Destroy', chitiet_dathang, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Chitiet Dathang', new_chitiet_dathang_path %>
+<section class="women-banner spad">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="product-large set-bg" data-setbg="assets/products/women-large.jpg">
+          <h2>Quần Áo</h2>
+          <a href="#">Xem Thêm</a>
+        </div>
+      </div>
+      <div class="col-lg-8 offset-lg-1" id="abd">
+        <div class="product-slider owl-carousel">
+          <%=@hui.sample.each do |itemset|%>
+            <%@chitiet_sp.where(id: itemset).each do |item|%>
+              <div class="product-item">
+                <div class="pi-pic">
+                  <img src= <%=item.hinh1%> alt="">
+                  <div class="sale">Giảm giá</div>
+                  <ul>
+                    <li class="w-icon active"><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li class="quick-view"><a href="#">+ Xem Nhanh</a></li>
+                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                  </ul>
+                </div>
+                <div class="pi-text">
+                  <div class="catagory-name">Coat</div>
+                  <a href="#">
+                    <h5><%=item.sanpham.tensanpham%></h5>
+                  </a>
+                  <div class="product-price">
+                    <%=item.giaban.to_i%> VNĐ
+                    <span>$35.00</span>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready( function () {
+    $('#abd').click(function(){
+    alert("bạn đã click");
+    });
+  });
+</script>

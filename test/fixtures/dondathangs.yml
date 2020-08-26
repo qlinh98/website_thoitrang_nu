@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ngaydathang: 2020-06-22
+  phuongthuctt: MyString
+  diachigiao: MyString
+  sdt: MyString
+  ghichu: MyString
+  tinhtrang: false
+  tongtien: 9.99
+  giaohang: one
+  user: one
+
+two:
+  ngaydathang: 2020-06-22
+  phuongthuctt: MyString
+  diachigiao: MyString
+  sdt: MyString
+  ghichu: MyString
+  tinhtrang: false
+  tongtien: 9.99
+  giaohang: two
+  user: two

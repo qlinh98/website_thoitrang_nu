@@ -1,0 +1,42 @@
+<%= form_with(model: sanpham, local: true) do |form| %>
+  <% if sanpham.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sanpham.errors.count, "error") %> prohibited this sanpham from being saved:</h2>
+
+      <ul>
+        <% sanpham.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tensanpham %>
+    <%= form.text_field :tensanpham %>
+  </div>
+
+  <div class="field">
+    <%= form.label :giaban %>
+    <%= form.text_field :giaban %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mota %>
+    <%= form.text_area :mota %>
+  </div>
+
+  <div class="field">
+    <%= form.label :loaisanpham_id %>
+    <%= form.text_field :loaisanpham_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thuonghieu_id %>
+    <%= form.text_field :thuonghieu_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

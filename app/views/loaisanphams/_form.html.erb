@@ -1,0 +1,27 @@
+<%= form_with(model: loaisanpham, local: true) do |form| %>
+  <% if loaisanpham.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(loaisanpham.errors.count, "error") %> prohibited this loaisanpham from being saved:</h2>
+
+      <ul>
+        <% loaisanpham.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tenloai %>
+    <%= form.text_field :tenloai %>
+  </div>
+
+  <div class="field">
+    <%= form.label :danhmuc_id %>
+    <%= form.text_field :danhmuc_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

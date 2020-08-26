@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Nhacungcaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tenncc</th>
+      <th>Sdt</th>
+      <th>Diachi</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nhacungcaps.each do |nhacungcap| %>
+      <tr>
+        <td><%= nhacungcap.tenncc %></td>
+        <td><%= nhacungcap.sdt %></td>
+        <td><%= nhacungcap.diachi %></td>
+        <td><%= nhacungcap.email %></td>
+        <td><%= link_to 'Show', nhacungcap %></td>
+        <td><%= link_to 'Edit', edit_nhacungcap_path(nhacungcap) %></td>
+        <td><%= link_to 'Destroy', nhacungcap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nhacungcap', new_nhacungcap_path %>

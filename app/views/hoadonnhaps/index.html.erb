@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hoadonnhaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ngaynhap</th>
+      <th>Tongtien</th>
+      <th>Nhacungcap</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hoadonnhaps.each do |hoadonnhap| %>
+      <tr>
+        <td><%= hoadonnhap.ngaynhap %></td>
+        <td><%= hoadonnhap.tongtien %></td>
+        <td><%= hoadonnhap.nhacungcap_id %></td>
+        <td><%= link_to 'Show', hoadonnhap %></td>
+        <td><%= link_to 'Edit', edit_hoadonnhap_path(hoadonnhap) %></td>
+        <td><%= link_to 'Destroy', hoadonnhap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hoadonnhap', new_hoadonnhap_path %>

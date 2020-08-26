@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <p><%=chitiet_dathang.chitietsanpham_id%></p>
+  </td>
+  <td>
+    <p><%=chitiet_dathang.chitietsanpham.sanpham.tensanpham%></p>
+  </td>
+  <td>
+    <p><%=chitiet_dathang.mausp%></p>
+  </td>
+  <td>
+    <p><%=chitiet_dathang.size.upcase%></p>
+  </td>
+  <td>
+    <p><%=chitiet_dathang.soluong%></p>
+  </td>
+  <td>
+    <p><%=number_to_currency((chitiet_dathang.chitietsanpham.giaban), unit: "VND", precision: 0, format: "%n %u")%></p>
+  </td>
+</tr>

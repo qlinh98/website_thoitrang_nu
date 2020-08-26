@@ -1,0 +1,44 @@
+<div class="wrapper">
+    ...
+
+      <div class="bt-drop-in-wrapper">
+        <div id="bt-dropin"></div>
+       </div>
+       
+    ...
+
+        <input type="hidden" id="nonce" name="payment_method_nonce" />
+        <button class="button" type="submit"><span>Test Transaction</span></button>
+        
+    ...
+</div>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.14.1/js/dropin.min.js"></script> # thư viện javascript client SDK của Braintree
+<script>
+  var form = document.querySelector('#payment-form');
+  var client_token = "<%= @client_token %>"; # lưu client token nhận được từ server
+
+ # khởi tạo UI mặc định do Braintree cung cấp (bọc trong div id="bt-dropin")
+  braintree.dropin.create({
+    authorization: client_token,
+    container: '#bt-dropin',
+    paypal: {
+      flow: 'vault'
+    }
+  }, function (createErr, instance) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      instance.requestPaymentMethod(function (err, payload) {
+        if (err) {
+          console.log('Error', err);
+          return;
+        }
+
+        # Thêm nonce vào trong form và submit
+        document.querySelector('#nonce').value = payload.nonce;
+        form.submit();
+      });
+    });
+  });
+</script>

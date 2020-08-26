@@ -1,0 +1,238 @@
+<%# transition: All 500ms ease %>
+<!-- Hero Section Begin -->
+<section class="hero-section">
+  <div class="hero-items owl-carousel">
+    <div class="single-hero-items set-bg" data-setbg="/assets/hero-1.jpg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <span>Túi xách</span>
+            <h1>Black friday</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore</p>
+            <a href="#" class="primary-btn">Mua Ngay</a>
+          </div>
+        </div>
+        <div class="off-card">
+          <h2>Giảm giá <span>50%</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="single-hero-items set-bg" data-setbg="/assets/hero-2.jpg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <span>Giày</span>
+            <h1>Black friday</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore</p>
+            <a href="#" class="primary-btn">Mua ngay</a>
+          </div>
+        </div>
+        <div class="off-card">
+          <h2>Giảm giá <span>50%</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Hero Section End -->
+<!-- Banner Section Begin -->
+<div class="banner-section spad">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="single-banner">
+          <img src="assets/products/set_quan_ao.webp" alt="">
+          <div class="inner-text">
+            <h4>Quần Áo</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="single-banner">
+          <img src="assets/products/tui-xach-nu-lv-mtx14-1.jpg" alt="">
+          <div class="inner-text">
+            <h4>Túi Xách</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="single-banner">
+          <img src="assets/products/giay_van_nu.jpg" alt="">
+          <div class="inner-text">
+            <h4>Giày</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Banner Section End -->
+<!-- Women Banner Section Begin -->
+<section class="women-banner spad">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="product-large set-bg" data-setbg="assets/products/women-large.jpg">
+          <h2>Thời trang nữ</h2>
+          <a href="#">Xem Thêm</a>
+        </div>
+      </div>
+      <%arr = @hui.sample%>
+      <%unless arr.nil? %>
+        <div class="col-lg-8 offset-lg-1">
+          <div class="product-slider owl-carousel">
+            <%arr.each do |itemset|%>
+              <%@chitiet_sp.where(id: itemset).each do |item|%>
+                <div class="product-item">
+                  <div class="pi-pic">
+                    <%=link_to @chitiet_sp.where(id: itemset)[0].sanpham do%>
+                      <%= image_tag item.hinh1.url%>
+                    <%end%>
+                    <div class="sale">Hot</div>
+                  </div>
+                  <div class="pi-text">
+                    <div class="catagory-name"><%= item.sanpham.loaisanpham.tenloai%></div>
+                    <a href="#">
+                      <h5><%=item.sanpham.tensanpham%></h5>
+                    </a>
+                    <div class="product-price">
+                      <%=number_to_currency((item.giaban), unit: "VND", precision: 0 , format: "%n %u")%>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            <%end%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</section>
+<!-- Women Banner Section End -->
+<!-- Deal Of The Week Section Begin-->
+<section class="deal-of-week set-bg spad" data-setbg="/assets/time-bg.jpg">
+  <div class="container">
+    <div class="col-lg-6 text-center">
+      <div class="section-title">
+        <h2>Giảm Giá Trong Tuần</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br />
+          do ipsum dolor sit amet,
+          consectetur adipisicing elit </p>
+        <div class="product-price">
+          $35.00
+          <span>/ HanBag</span>
+        </div>
+      </div>
+      <div class="countdown-timer" id="countdown">
+        <div class="cd-item">
+          <span>56</span>
+          <p>Days</p>
+        </div>
+        <div class="cd-item">
+          <span>12</span>
+          <p>Hrs</p>
+        </div>
+        <div class="cd-item">
+          <span>40</span>
+          <p>Mins</p>
+        </div>
+        <div class="cd-item">
+          <span>52</span>
+          <p>Secs</p>
+        </div>
+      </div>
+      <a href="#" class="primary-btn">Mua Ngay</a>
+    </div>
+  </div>
+</section>
+<!-- Deal Of The Week Section End -->
+<!-- Man Banner Section Begin -->
+<section class="man-banner spad">
+  <div class="container-fluid">
+    <div class="row">
+      <%arr = @hui.sample%>
+      <%unless arr.nil? %>
+      <div class="col-lg-8">
+        <div class="product-slider owl-carousel">
+          <%arr.each do |itemset|%>
+            <%@chitiet_sp.where(id: itemset).each do |item|%>
+              <div class="product-item">
+                <div class="pi-pic">
+                  <ul>
+                    <li class="quick-view"><a>Xem sản phẩm <i class="fa fa-search-plus" aria-hidden="true"></i> </a></li>
+                  </ul>
+                  <%=link_to @chitiet_sp.where(id: itemset)[0].sanpham do%>
+                    <%= image_tag item.hinh1.url%>
+                  <%end%>
+                  <div class="sale">Hot</div>
+                </div>
+                <div class="pi-text">
+                  <div class="catagory-name"><%= item.sanpham.loaisanpham.tenloai%></div>
+                  <a href="#">
+                    <h5><%=item.sanpham.tensanpham%></h5>
+                  </a>
+                  <div class="product-price">
+                    <%=number_to_currency((item.giaban), unit: "VND", precision: 0 , format: "%n %u")%>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+      <%end%>
+      <div class="col-lg-3 offset-lg-1">
+        <div class="product-large set-bg m-large" data-setbg="/assets/products/ao_nu/ao_nu_somi.jpg">
+          <h2>Sản phẩm bán chạy</h2>
+          <a href="#">Xem Thêm</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Man Banner Section End -->
+<!-- Latest Blog Section Begin -->
+<section class="latest-blog spad">
+  <div class="container">
+    <div class="benefit-items">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="single-benefit">
+            <div class="sb-icon">
+              <%= image_tag("icon-1.png", :alt => "rss feed") %>
+            </div>
+            <div class="sb-text">
+              <h6>Miễn Phí Giao Hàng</h6>
+              <p>Cho đơn hàng trên 100k</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="single-benefit">
+            <div class="sb-icon">
+              <%= image_tag("icon-2.png", :alt => "rss feed") %>
+            </div>
+            <div class="sb-text">
+              <h6>Giao Hàng Đúng Giờ</h6>
+              <p>Giao trong 3-5 ngày</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="single-benefit">
+            <div class="sb-icon">
+              <%= image_tag("icon-3.png", :alt => "rss feed") %>
+            </div>
+            <div class="sb-text">
+              <h6>Thanh Toán An Toàn</h6>
+              <p>Thanh toán an toàn 100%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Latest Blog Section End -->

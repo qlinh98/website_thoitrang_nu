@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 30px;
+        }
+      
+      #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+        }
+      
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+      
+        #customers tr:hover {background-color: #ddd;}
+      
+        #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+        }
+        .floatLeft {
+             width: 50%; float: left;
+             }
+        .floatRight {
+             width: 49%; float: right;
+           }
+      .container_table {
+              overflow: hidden;
+              }
+      #note{
+        margin-left: 50px;
+        color: red;
+      }
+       .border_email{
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-bottom: 30px;
+        border: 1px solid red;
+      }
+      .padding_email{
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

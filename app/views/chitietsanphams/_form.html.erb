@@ -1,0 +1,62 @@
+<%= form_with(model: chitietsanpham, local: true) do |form| %>
+  <% if chitietsanpham.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chitietsanpham.errors.count, "error") %> prohibited this chitietsanpham from being saved:</h2>
+
+      <ul>
+        <% chitietsanpham.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :mausp %>
+    <%= form.text_field :mausp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.text_field :size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :soluongton %>
+    <%= form.number_field :soluongton %>
+  </div>
+
+  <div class="field">
+    <%= form.label :giaban %>
+    <%= form.text_field :giaban %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinh1 %>
+    <%= form.text_field :hinh1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinh2 %>
+    <%= form.text_field :hinh2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinh3 %>
+    <%= form.text_field :hinh3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinh4 %>
+    <%= form.text_field :hinh4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sanpham_id %>
+    <%= form.text_field :sanpham_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

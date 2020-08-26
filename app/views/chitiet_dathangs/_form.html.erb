@@ -1,0 +1,47 @@
+<%= form_with(model: chitiet_dathang, local: true) do |form| %>
+  <% if chitiet_dathang.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chitiet_dathang.errors.count, "error") %> prohibited this chitiet_dathang from being saved:</h2>
+
+      <ul>
+        <% chitiet_dathang.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :soluong %>
+    <%= form.number_field :soluong %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dongia %>
+    <%= form.text_field :dongia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thanhtien %>
+    <%= form.text_field :thanhtien %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chitietsanpham_id %>
+    <%= form.text_field :chitietsanpham_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dondathang_id %>
+    <%= form.text_field :dondathang_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cart_id %>
+    <%= form.text_field :cart_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

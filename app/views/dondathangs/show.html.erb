@@ -1,0 +1,92 @@
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row" style="margin-right: -150px; margin-left: -150px">
+      <div class="col-md-7">
+        <!-- Billing Details -->
+        <div class="billing-details">
+          <div class="section-title">
+            <h3 class="title">THÔNG TIN ĐƠN ĐẶT HÀNG</h3>
+          </div>
+          <% if user_signed_in? %>
+            <div class="form-group">
+              <%=label_tag '', 'Ngày đặt hàng'%></br>
+            <%=text_field_tag 'query', @dondathang.ngaydathang, :required => true, size: 40, disabled: true, class: "input"%>
+          </div>
+        <%end%>
+        <div class="form-group">
+          <%=label_tag '', 'Phương thức thanh toán'%></br>
+        <%=text_field_tag 'query', @dondathang.phuongthuctt, :required => true, size: 40, disabled: true, class: "input"%>
+      </div>
+      <div class="form-group">
+        <%=label_tag '', 'Địa chỉ giao'%></br>
+      <%=text_field_tag 'query', @dondathang.diachigiao, :required => true, size: 40, disabled: true, class: "input"%>
+    </div>
+    <div class="form-group">
+      <%=label_tag '', 'Số điện thoại'%></br>
+    <%=text_field_tag 'query', @dondathang.sdt, :required => true, size: 40, disabled: true, class: "input"%>
+  </div>
+  <div class="form-group">
+    <%=label_tag 'name', 'Tình trạng'%></br>
+  <%=text_field_tag 'query', @dondathang.tinhtrang, :required => true, size: 40, disabled: true, class: "input"%>
+</div>
+<div class="form-group">
+  <%=label_tag 'name', 'Ghi chú'%></br>
+<%=text_field_tag 'query', @dondathang.ghichu, :required => true, size: 40, disabled: true, class: "input"%>
+</div>
+<div class="form-group">
+  <%=label_tag 'name', 'Tổng tiền'%></br>
+<%=text_field_tag 'query', number_to_currency((@dondathang.tongtien), unit: "VND", precision: 0 , format: "%n %u"), :required => true, size: 40, disabled: true, class: "input"%>
+</div>
+</div>
+</div>
+<!-- Order Details -->
+<div class="col-md-5 order-details">
+  <div class="section-title text-center">
+    <h3 class="title">CHI TIẾT ĐƠN ĐẶT HÀNG</h3>
+  </div>
+  <div class="order-summary">
+    <div class="order-col">
+      <div><strong>SẢN PHẨM</strong></div>
+      <div><strong>GIÁ</strong></div>
+    </div>
+    <div class="scroll">
+      <% @dondathang.chitiet_dathang.each do |item| %>
+        <div class="order-col">
+          <div>
+            <img src="<%=item.chitietsanpham.hinh1%>" alt="" width="45" height="40">
+            <td><%= item.soluong %> x </td>
+            <td><%=link_to item.chitietsanpham.sanpham.tensanpham, item.chitietsanpham.sanpham %></td>
+            <td> - <%= item.mausp%> x <%= item.size.upcase %></td>
+            <br/>
+            <td>Mã sản phẩm: <%= item.chitietsanpham_id%></td>
+          </div>
+          <div class="price-product"><strong><%= number_to_currency((item.total_price), unit: "VND", precision: 0, format: "%n %u") %></strong></div>
+        </div>
+      <% end %>
+    </div>
+    <tr class="total_line">
+      <div class="order-col">
+        <div>Phí giao hàng</div>
+        <div><strong>MIỄN PHÍ</strong></div>
+      </div>
+      <div class="order-col">
+        <div><strong>TỔNG TIỀN</strong></div>
+        <div><strong class="order-total"><%= number_to_currency((@dondathang.tongtien),precision: 0, unit: "VND", format: "%n %u") %></strong></div>
+      </div>
+      <div input class="primary-btn-dh">
+        <%= link_to 'Giỏ hàng', controller: "carts", action: "show", id: @cart.id%>
+      </div>
+    </tr>
+  </div>
+  <!-- /Order Details -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->
+</div>
+

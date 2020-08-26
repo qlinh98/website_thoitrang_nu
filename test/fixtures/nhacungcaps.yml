@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tenncc: MyString
+  sdt: MyString
+  diachi: MyString
+  email: MyString
+
+two:
+  tenncc: MyString
+  sdt: MyString
+  diachi: MyString
+  email: MyString

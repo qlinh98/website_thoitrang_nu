@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Soluong:</strong>
+  <%= @chitiet_dathang.soluong %>
+</p>
+
+<p>
+  <strong>Dongia:</strong>
+  <%= @chitiet_dathang.dongia %>
+</p>
+
+<p>
+  <strong>Thanhtien:</strong>
+  <%= @chitiet_dathang.thanhtien %>
+</p>
+
+<p>
+  <strong>Chitietsanpham:</strong>
+  <%= @chitiet_dathang.chitietsanpham_id %>
+</p>
+
+<p>
+  <strong>Dondathang:</strong>
+  <%= @chitiet_dathang.dondathang_id %>
+</p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @chitiet_dathang.cart_id %>
+</p>
+
+<%= link_to 'Edit', edit_chitiet_dathang_path(@chitiet_dathang) %> |
+<%= link_to 'Back', chitiet_dathangs_path %>

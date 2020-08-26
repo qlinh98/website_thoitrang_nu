@@ -1,0 +1,323 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb-text product-more">
+          <a href="./home.html"><i class="fa fa-home"></i> Trang chủ</a>
+          <a href="./shop.html">Cửa hàng</a>
+          <span>Chi tiết sản phẩm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad page-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="filter-widget">
+          <h4 class="fw-title">Loại hàng</h4>
+          <ul class="filter-catagories">
+            <li><a href="#">Quần áo</a></li>
+            <li><a href="#">Giày</a></li>
+            <li><a href="#">Túi xách</a></li>
+          </ul>
+        </div>
+        <div class="filter-widget">
+          <h4 class="fw-title">Thương hiệu</h4>
+          <div class="fw-brand-check">
+            <div class="bc-item">
+              <label for="bc-calvin">
+                Calvin Klein
+                <input type="checkbox" id="bc-calvin">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="bc-item">
+              <label for="bc-diesel">
+                Diesel
+                <input type="checkbox" id="bc-diesel">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="bc-item">
+              <label for="bc-polo">
+                Polo
+                <input type="checkbox" id="bc-polo">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="bc-item">
+              <label for="bc-tommy">
+                Tommy Hilfiger
+                <input type="checkbox" id="bc-tommy">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="filter-widget">
+          <h4 class="fw-title"></h4>
+          <div class="filter-range-wrap">
+            <div class="range-slider">
+              <div class="price-input">
+                <input type="text" id="minamount">
+                <input type="text" id="maxamount">
+              </div>
+            </div>
+            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="100000" data-max="25000000">
+              <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+            </div>
+          </div>
+          <a href="#" class="filter-btn">Lọc</a>
+        </div>
+        <div class="filter-widget">
+          <h4 class="fw-title">Kích thước</h4>
+          <div class="fw-size-choose">
+            <div class="sc-item">
+              <input type="radio" id="s-size">
+              <label for="s-size">s</label>
+            </div>
+            <div class="sc-item">
+              <input type="radio" id="m-size">
+              <label for="m-size">m</label>
+            </div>
+            <div class="sc-item">
+              <input type="radio" id="l-size">
+              <label for="l-size">l</label>
+            </div>
+            <div class="sc-item">
+              <input type="radio" id="xs-size">
+              <label for="xs-size">xs</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="product-pic-zoom">
+              <img class="product-big-img" src = <%=  @ctsps&.first&.hinh1.url%> alt="">
+              <div class="zoom-icon">
+                <i class="fa fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="product-thumbs" >
+              <div class="product-thumbs-track ps-slider owl-carousel" >
+                <div class="pt active" id = "anh1" data-imgbigurl=<%=  @ctsps&.first&.hinh1.url%>><img src=<%=  @ctsps&.first&.hinh1.url%> id = "anh_1" alt=""></div>
+                                <div class="pt" id = "anh2" data-imgbigurl = <%=   @ctsps&.first&.hinh2.url%>><img src=<%=  @ctsps&.first&.hinh2.url%> id = "anh_2" alt=""></div>
+                                <div class="pt" id = "anh3" data-imgbigurl = <%=   @ctsps&.first&.hinh3.url%>><img src=<%=  @ctsps&.first&.hinh3.url%> id = "anh_3" alt=""></div>
+                                <div class="pt" id = "anh4" data-imgbigurl = <%=   @ctsps&.first&.hinh4.url%>><img src=<%=  @ctsps&.first&.hinh4.url%> id = "anh_4" alt=""></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product-details">
+                            <div class="pd-title">
+                                <span><%= @sanpham.loaisanpham.tenloai%></span>
+                                <h3><%= @sanpham.tensanpham%></h3>
+                            </div>
+                            <div class="pd-desc">
+                                <h4 id = "gia"></h4>
+                            </div>
+                            <div class="pd-color">
+                                <h6>Màu sắc</h6>
+                                <div class="show_color">
+                                  <%@arr_size = []%>
+                                  <%@sanpham.chitietsanpham.each do |ctsp| %>
+                                  <%@arr_size << sizesp(ctsp)%>
+                                  <%if @ctsps.first == ctsp%>
+                                    <label><input type="radio", style="background: <%=ctsp.mausanpham.mamau%>" data = "<%=sizesp(ctsp)%>" data-mau= "<%= ctsp.mausanpham.tenmau%>" class="option-input radio" value="<%= ctsp.id%>" name="example" checked="checked" id ="load_ct" /> <%= ctsp.mausanpham.tenmau%>&ensp;</label>
+            <%else%>
+              <label><input type="radio", style="background: <%=ctsp.mausanpham.mamau%>", data = "<%=sizesp(ctsp)%>" data-mau= "<%= ctsp.mausanpham.tenmau%>" class="option-input radio" value="<%= ctsp.id%>" name="example"/> <%= ctsp.mausanpham.tenmau%>&ensp;</label>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+      <%= javascript_tag do %>
+        window.ctsps = <%=raw @ctsps.to_json %>;
+        window.ctsize = <%=raw Chitietsize.all.to_json %>;
+        window.sizesp = <%=raw Sizesanpham.all.to_json %>;
+        window.arr_size = <%=raw @arr_size.join(",").split(",").uniq.to_json%>
+      <%end%>
+      <div class="pd-color-other">
+        <h6>Size</h6>
+        <div class="pd-size-choose" id = "size_sp" >
+        </div>
+        <%= javascript_tag do %>
+          window.ctsps = <%=raw @ctsps.to_json %>;
+        <%end%>
+        <div class="pd-size-choose" id = "size_sp">
+        </div>
+        <div class= "select-guide-size">
+          <a href="/chitietsanphams"><i class='fa fa-pencil'> Hướng dẫn chọn kích thước</i></a>
+        </div>
+        <br />
+        <div class="quantity" id = "getsl">
+          <div class="pro-quantity">
+            <input type="number" min="1" value="1" id = "input_count" >
+          </div>
+          <p class="sl_sp"></p>
+        </div>
+        <%=button_to "Thêm Vào Giỏ", chitiet_dathangs_path(chitietsanpham_id: @ctsps.first),form_class: "add_to_cart_01" ,class:"primary-button",id: "them_vao_gio",params: {sl: 1,mau_data: "", size_data: ""}%>
+        <ul class="pd-tags" style="margin-top: 15px">
+          <li><span>THƯƠNG HIỆU</span>: <%= @sanpham.thuonghieu.tenthuonghieu%></li>
+        </ul>
+        <div class="pd-share">
+          <div class="p-code" id = "ma_chinh">Mã sản phẩm: <%= @sanpham.id%></div>
+          <div class="pd-social">
+            <a href="#"><i class="ti-facebook"></i></a>
+            <a href="#"><i class="ti-twitter-alt"></i></a>
+            <a href="#"><i class="ti-linkedin"></i></a>
+          </div>
+        </div>
+        <div>
+          <br />
+          <table>
+            <tr>
+              <td><%= image_tag("icon-1.png", :alt => "rss feed") %></td>
+              <td style="width: 170px"><b>Miễn Phí Giao Hàng</b><br/>
+                Cho đơn hàng trên</td>
+              <td><%= image_tag("icon-2.png", :alt => "rss feed") %></td>
+              <td><b>Giao Hàng Đúng Giờ</b><br/>
+                Giao trong 3-5 ngày</td>
+            </tr>
+            <tr>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-tab">
+    <div class="tab-item">
+      <ul class="nav" role="tablist">
+        <li>
+          <a class="active" data-toggle="tab" href="#tab-1" role="tab">MÔ TẢ</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#tab-2" role="tab">THÔNG SỐ</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-item-content">
+      <div class="tab-content">
+        <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
+          <div class="product-content">
+            <div class="row">
+              <div class="col-lg-7">
+                <pre><p><%= @sanpham.mota%></p></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="tab-2" role="tabpanel">
+          <div class="specification-table">
+            <table>
+              <tr>
+                <td class="p-catagory">Giá</td>
+                <td>
+                  <div class="p-price"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-catagory">Kích thước</td>
+                <td id = "kichthuoc">
+                  <%@kichthuoc.each do |kt| %>
+                    <%= kt%>
+                  <%end%>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-catagory">Màu sắc</td>
+                <td><span id="mau_mota"><%= @ctsps&.first&.mausanpham.tenmau%></span></td>
+              </tr>
+              <tr>
+                <td class="p-catagory">Mã sản phẩm</td>
+                <td>
+                  <div class="p-code" id = "ma_mota"><%= @sanpham.id%></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- Product Shop Section End -->
+<!-- Related Products Section End -->
+<%arr = show_hui_product(@sanpham).sample%>
+<%if arr.nil?%>
+  <%arr = show_hui_product(@sanpham).sample%>
+<%end%>
+<%if arr.nil?%>
+  <%arr = show_hui_product(@sanpham).sample%>
+<%end%>
+<%if arr.nil?%>
+  <%arr = show_hui_product(@sanpham).sample%>
+<%end%>
+<%unless arr.nil?%>
+  <div class="related-products">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-title">
+            <h2>Sản Phẩm Liên Quan</h2>
+          </div>
+        </div>
+      </div>
+      <%# <%arr = show_product_hui(@sanpham).sample%>
+      <%if arr.length == 1%>
+        <div class="col-lg-8-1 offset-lg-related1" >
+          <div class="product-slider1 owl-carousel">
+          <%elsif arr.length == 2%>
+            <div class="col-lg-8-2 offset-lg-related2" >
+              <div class="product-slider2 owl-carousel">
+              <%elsif arr.length == 3%>
+                <div class="col-lg-8-3 offset-lg-related3" >
+                  <div class="product-slider3 owl-carousel">
+                  <%else%>
+                    <div class="col-lg-8 offset-lg-related" >
+                      <div class="product-slider owl-carousel">
+                      <%end%>
+                      <%arr.each do |itemset|%>
+                        <%@chitiet_sp.where(id: itemset).each do |item|%>
+                          <div class="product-item">
+                            <div class="pi-pic">
+                              <%=link_to @chitiet_sp.where(id: itemset)[0].sanpham do%>
+                                <%= image_tag (item.hinh1.url)%>
+                              <%end%>
+                              <div class="sale">Hot</div>
+                            </div>
+                            <div class="pi-text">
+                              <div class="catagory-name"><%= item.sanpham.loaisanpham.tenloai%></div>
+                              <a href="#">
+                                <h5><%=item.sanpham.tensanpham%></h5>
+                              </a>
+                              <div class="product-price">
+                                <%=number_to_currency((item.giaban), unit: "VND", precision: 0 , format: "%n %u")%>
+                              </div>
+                            </div>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <!-- Related Products Section End -->
+  <%= javascript_include_tag 'show_sanpham', 'data-turbolinks-track': 'reload' %>
