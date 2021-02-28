@@ -84,7 +84,7 @@ module ApplicationHelper
 
   # show sanpham
   def show_hui_product(sanpham)
-    # binding.pry
+    return if sanpham.blank? || sanpham.chitietsanpham.blank?
     get_hui_cart([sanpham.chitietsanpham[0].id]).compact.empty? ? a = [] : a = get_hui_cart([sanpham.chitietsanpham[0].id]).reject { |c| c.empty? }
   end
 end

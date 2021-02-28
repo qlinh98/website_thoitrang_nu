@@ -108,8 +108,10 @@
                     <ul>
                       <li class="quick-view"><a>Xem sản phẩm <i class="fa fa-search-plus" aria-hidden="true"></i> </a></li>
                     </ul>
-                    <%=link_to ctsps do%>
-                      <%= image_tag @ctsps&.first&.hinh1.url, class: "img_css"%>
+                    <%if @ctsps.first&.hinh1.present?%>
+                      <%=link_to ctsps do%>
+                        <%= image_tag @ctsps&.first&.hinh1.url, class: "img_css"%>
+                      <%end%>
                     <%end%>
                     <div class="sale pp-sale">Sale</div>
                   </div>
@@ -134,13 +136,13 @@
 <script>
   $(document).ready(function(){
         $('#add_cart').click(function () {
-  
+
           // window.location.href='/chitiet_dathangs?chitietsanpham_id=' + $(this).attr("value");
           // alert ("hello");
           console.log ("hello");
         }
     );
-  
+
    $(".test1").html("<i class='fa fa-shopping-bag'  ></i>");
   //  $(".test1").attr("value") = 555;
   // $(".test1").click(function(){

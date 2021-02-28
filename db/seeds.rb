@@ -31,7 +31,7 @@ Thuonghieu.create(tenthuonghieu: "Boho") #7
 Sanpham.create(tensanpham: "Áo sơ mi Viên lá sen Họa tiết", loaisanpham_id: 1, thuonghieu_id: 7, mota: "
   Phong cách:	Boho
   Kiểu mẫu:	Họa tiết hoa
-  Viền :	Cổ v 
+  Viền :	Cổ v
   Chiều dài:	Thường xuyên
   Kiểu:	Xoay eo
   Chi tiết:	Viên lá sen, Nút phía trước

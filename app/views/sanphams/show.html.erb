@@ -98,21 +98,25 @@
           </div>
         </div>
       </div>
+      <% img_url = @ctsps&.first&.hinh1.url if @ctsps&.first&.hinh1.present? %>
+      <% img_url_2 = @ctsps&.first&.hinh2.url if @ctsps&.first&.hinh1.present? %>
+      <% img_url_3 = @ctsps&.first&.hinh3.url if @ctsps&.first&.hinh3.present? %>
+      <% img_url_4 = @ctsps&.first&.hinh4.url if @ctsps&.first&.hinh4.present? %>
       <div class="col-lg-9">
         <div class="row">
           <div class="col-lg-6">
             <div class="product-pic-zoom">
-              <img class="product-big-img" src = <%=  @ctsps&.first&.hinh1.url%> alt="">
+              <img class="product-big-img" src = <%=  img_url %> alt="">
               <div class="zoom-icon">
                 <i class="fa fa-search-plus"></i>
               </div>
             </div>
             <div class="product-thumbs" >
               <div class="product-thumbs-track ps-slider owl-carousel" >
-                <div class="pt active" id = "anh1" data-imgbigurl=<%=  @ctsps&.first&.hinh1.url%>><img src=<%=  @ctsps&.first&.hinh1.url%> id = "anh_1" alt=""></div>
-                                <div class="pt" id = "anh2" data-imgbigurl = <%=   @ctsps&.first&.hinh2.url%>><img src=<%=  @ctsps&.first&.hinh2.url%> id = "anh_2" alt=""></div>
-                                <div class="pt" id = "anh3" data-imgbigurl = <%=   @ctsps&.first&.hinh3.url%>><img src=<%=  @ctsps&.first&.hinh3.url%> id = "anh_3" alt=""></div>
-                                <div class="pt" id = "anh4" data-imgbigurl = <%=   @ctsps&.first&.hinh4.url%>><img src=<%=  @ctsps&.first&.hinh4.url%> id = "anh_4" alt=""></div>
+                <div class="pt active" id = "anh1" data-imgbigurl=<%=  img_url %>><img src=<%=  img_url %> id = "anh_1" alt=""></div>
+                                <div class="pt" id = "anh2" data-imgbigurl = <%=   img_url_2%>><img src=<%=  img_url_2%> id = "anh_2" alt=""></div>
+                                <div class="pt" id = "anh3" data-imgbigurl = <%=   img_url_3%>><img src=<%=  img_url_3%> id = "anh_3" alt=""></div>
+                                <div class="pt" id = "anh4" data-imgbigurl = <%=   img_url_4%>><img src=<%=  img_url_4%> id = "anh_4" alt=""></div>
                         </div>
                       </div>
                     </div>
@@ -235,7 +239,7 @@
               </tr>
               <tr>
                 <td class="p-catagory">Màu sắc</td>
-                <td><span id="mau_mota"><%= @ctsps&.first&.mausanpham.tenmau%></span></td>
+                <td><span id="mau_mota"><%= @ctsps&.first&.mausanpham.tenmau if @ctsps&.first&.mausanpham&.tenmau.present? %></span></td>
               </tr>
               <tr>
                 <td class="p-catagory">Mã sản phẩm</td>
@@ -254,16 +258,7 @@
 </section>
 <!-- Product Shop Section End -->
 <!-- Related Products Section End -->
-<%arr = show_hui_product(@sanpham).sample%>
-<%if arr.nil?%>
-  <%arr = show_hui_product(@sanpham).sample%>
-<%end%>
-<%if arr.nil?%>
-  <%arr = show_hui_product(@sanpham).sample%>
-<%end%>
-<%if arr.nil?%>
-  <%arr = show_hui_product(@sanpham).sample%>
-<%end%>
+<%arr = show_hui_product(@sanpham).sample if show_hui_product(@sanpham).present?%>
 <%unless arr.nil?%>
   <div class="related-products">
     <div class="container-fluid">
