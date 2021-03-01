@@ -59,7 +59,7 @@ class FHM
     # @mapFMAP = OpenStruct.new
   end
 
-  ENABLE_LA_PRUNE = true
+  # ENABLE_LA_PRUNE = true
 
   def runAlgorithm(input, min_utility) # đọc files du lieu txt
     f = File.open(input, "r")
@@ -305,6 +305,6 @@ min_utility = 30
 # min_utility = 2600000
 Benchmark.bm(5) do |x|
   x.report("-----> Times hoan tat tim kiem: \n") {
-    main.runAlgorithm(input, min_utility)
+    # main.runAlgorithm(input, min_utility)
   }
 end
